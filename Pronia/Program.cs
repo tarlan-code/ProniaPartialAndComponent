@@ -12,12 +12,12 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 });
 
 builder.Services.AddScoped<LayoutService>();
-
+builder.Services.AddSession();
 var app = builder.Build();
 
 
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.MapControllerRoute(name: "areas",pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

@@ -10801,11 +10801,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code Academy\\Asp.NET\\Proniaa\\ProniaMultiFile\\Pronia\\Pronia.csproj",
+      "projectUniqueName": "D:\\Code Academy\\Asp.NET\\Proniaa\\ProniaPartialAndComponent\\ProniaPartialAndComponent\\Pronia\\Pronia.csproj",
       "projectName": "Pronia",
-      "projectPath": "D:\\Code Academy\\Asp.NET\\Proniaa\\ProniaMultiFile\\Pronia\\Pronia.csproj",
+      "projectPath": "D:\\Code Academy\\Asp.NET\\Proniaa\\ProniaPartialAndComponent\\ProniaPartialAndComponent\\Pronia\\Pronia.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\Code Academy\\Asp.NET\\Proniaa\\ProniaMultiFile\\Pronia\\obj\\",
+      "outputPath": "D:\\Code Academy\\Asp.NET\\Proniaa\\ProniaPartialAndComponent\\ProniaPartialAndComponent\\Pronia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
