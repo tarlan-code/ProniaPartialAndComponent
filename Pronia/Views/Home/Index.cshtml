@@ -6,6 +6,17 @@
 
 @section scripts {
     <script>
+
+
+        
+       
+
+
+        let count = $('.minicart-list .minicart-product').length
+        $(".quantity").html(count)
+
+
+
         let btn = document.querySelector("#loadMore");
         btn.addEventListener("click",function(e){
             e.preventDefault();
@@ -41,8 +52,52 @@
                 },
             });
         });
-        
-        
+
+
+
+      
+        $(document).on("click", ".addbasket", function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: this.href,
+                
+                success: function(data){
+                    if(data=="Ok"){
+                        $.ajax({
+                            type: "POST",
+                            url: "/Home/LoadBasket",
+                            success: function(response){
+                                $("#miniCart").html(response)
+                                let count = $('.minicart-list .minicart-product').length
+                                $(".quantity").html(count)
+                            },
+                            error: function(err){
+                                console.log(err)
+                            }
+                            
+                        
+                        })
+                    }
+                },
+                error: function(err){
+                    console.log(err)
+                }
+            });
+            
+        })
+
+
+        $(".minicart-btn").click(function(){
+            let element = $("#miniCart");
+            if (element.hasClass("open") == true) {
+                element.removeClass("open");
+            }
+            else{
+                element.addClass("open");
+                element.addClass("open");
+            }
+        })
     </script>
 }
 

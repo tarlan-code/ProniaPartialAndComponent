@@ -6,7 +6,8 @@ namespace Pronia.Controllers
 {
     public class ProductController : Controller
     {
-        
+
+        [HttpPost]
         public IActionResult AddBasket(int? id)
         {
             if (id is null || id < 0) return BadRequest();
@@ -38,7 +39,7 @@ namespace Pronia.Controllers
             {
                 MaxAge = TimeSpan.FromDays(1)
             });
-            return RedirectToAction("Index","Home");
+            return Content("Ok");
         }
     }
 }

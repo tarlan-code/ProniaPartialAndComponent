@@ -17,12 +17,12 @@ namespace Pronia.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            HeaderVM header = new HeaderVM
+            HeaderVM basket = new HeaderVM()
             {
                 Basket = GetBasket(),
                 Settings = _context.Settings.ToDictionary(s => s.Key, s => s.Value)
             };
-            return View(header);
+            return View(basket);
         }
 
 
