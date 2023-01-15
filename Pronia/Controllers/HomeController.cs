@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pronia.DAL;
 using Pronia.Models;
@@ -48,12 +47,7 @@ namespace Pronia.Controllers
         [HttpPost]
         public IActionResult QuickView(int? Id)
         {
-            if (Id is null || Id <= 0) return BadRequest(); 
-
-            var product = _context.Products.Include(p => p.ProductColors).ThenInclude(pc => pc.Color).Include(p => p.ProductSizes).ThenInclude(ps => ps.Size).Include(p => p.ProductImages).FirstOrDefault(p => p.Id == Id);
-
-            if(product is null) return NotFound();
-            return PartialView("_QuickViewPartial",product);
+            return ViewComponent("Modal",Id);
         }
 
 

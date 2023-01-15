@@ -27,23 +27,21 @@ ViewData["Title"] = "Home Page";
             
         })
 
-
-        let quickBtn = $(".quickView");
-        quickBtn.click(function (e) {
+        $(document).on("click", ".quickView",function (e) {
             e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: this.href,
-                    success: function (response) {
-                        console.log(response)
-                    $("#quickModal").html(response)
+            $.ajax({
+                type: "POST",
+                url: this.href,
+                success: function (response) {
+                    $("#modalarea").html(response)
                     $("#quickModal").modal('show');
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    }
-                });
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                },
+            });
         });
+        
         
     </script>
 }
@@ -654,15 +652,6 @@ class="testimonial-area section-space-top-90 section-space-bottom-95"
 </div>
 <!-- Blog Area End Here -->
 <!-- Begin Modal Area -->
-<div class="modal quick-view-modal fade"
-     id="quickModal"
-     aria-hidden="true"
-     data-bs-backdrop="static"
-     data-bs-keyboard="false"
-     tabindex="-1"
-     aria-labelledby="quickModal"
-     aria-hidden="true">
+<div id="modalarea"></div>
 
-</div>
-<!-- Modal Area End Here -->
 

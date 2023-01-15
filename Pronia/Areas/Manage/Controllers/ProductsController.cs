@@ -20,10 +20,14 @@ namespace Pronia.Areas.Manage.Controllers
             _env = env;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
-           
-            return View(_context.Products.Include(p => p.ProductColors).ThenInclude(pc => pc.Color).Include(p => p.ProductSizes).ThenInclude(ps => ps.Size).Include(p => p.ProductCategories).ThenInclude(pc => pc.Category).Include(p => p.ProductImages));
+           PaginationVM<Product> paginet = new PaginationVM<Product>();
+            paginet.MaxPageCount = (int)Math.Ceiling((decimal)_context.Products.Count() / 5);
+            paginet.CurrentPage = page;
+            if (page > paginet.MaxPageCount || page < 1) return BadRequest();
+            paginet.Items = _context.Products.Skip((page - 1) * 5).Take(5).Include(p => p.ProductColors).ThenInclude(pc => pc.Color).Include(p => p.ProductSizes).ThenInclude(ps => ps.Size).Include(p => p.ProductCategories).ThenInclude(pc => pc.Category).Include(p => p.ProductImages);
+            return View(paginet);
         } 
 
         

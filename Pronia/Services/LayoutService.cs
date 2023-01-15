@@ -1,4 +1,5 @@
 ﻿using Pronia.DAL;
+using Pronia.Models;
 
 namespace Pronia.Services
 {
@@ -15,5 +16,7 @@ namespace Pronia.Services
 		{
 			return _context.Settings.ToDictionary(s => s.Key, s => s.Value);
 		}
+
+		
 	}
 }

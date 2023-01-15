@@ -14,10 +14,10 @@ namespace Pronia.ViewComponents
         }
 
 
-        public Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var settings = _context.Settings.ToDictionary(s => s.Key, s => s.Value);
-            return Task.FromResult<IViewComponentResult>(View(settings));
+            return View(settings);
         }
     }
 }

@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Products";
 }
-@model IEnumerable<Product>
+@model PaginationVM<Product>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         
-                        @foreach (Product item in Model)
+                        @foreach (Product item in Model.Items)
                         {
                             <tr class="text-dark @(item.IsDeleted ? "bg-danger" : "")">
                                 <td>@item.Id</td>
@@ -83,7 +83,35 @@
 
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
 
+                        @if(Model.CurrentPage>1){
+
+                            <li class="page-item">
+                                <a class="page-link" aria-label="Previous" asp-action="Index" asp-route-page="@(Model.CurrentPage-1)">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        }
+                        @for (var i = 1; i <= Model.MaxPageCount; i++)
+                        {
+                            <li class="page-item @(Model.CurrentPage==i?"disabled":"")"><a class="page-link" asp-action="Index" asp-route-page="@i">@i</a></li>
+                            
+                        }
+
+                        @if (Model.MaxPageCount > Model.CurrentPage)
+                        {
+
+                            <li class="page-item">
+                                <a class="page-link" aria-label="Previous" asp-action="Index" asp-route-page="@(Model.CurrentPage+1)">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        }
+                       
+                    </ul>
+                </nav>
 
             </div>
         </div>
